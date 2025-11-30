@@ -78,7 +78,7 @@ const App = () => {
           <div className="h-px bg-cyan-700 grow"></div>
         </div>
 
-        <div className="p-10 flex flex-wrap justify-center gap-20 h-full w-full">
+        <div className="p-10 flex flex-wrap justify-center  gap-7 md:gap-20 h-full w-full">
           {task.map(function (elem, i) {
             const bgnote =
               i % 2 === 0
@@ -87,7 +87,7 @@ const App = () => {
             return (
               <div
                 key={i}
-                className={`flex flex-col rounded-3xl h-[40rem] w-[30rem] backdrop-blur-md border border-white/10 shadow-xl hover:shadow-cyan-500/20 hover:-translate-y-2 transition-all duration-300 ease-in-out ${bgnote}`}
+                className={`flex flex-col rounded-3xl h-[27rem] w-[12rem] md:h-[40rem] md:w-[30rem] backdrop-blur-md border border-white/10 shadow-xl hover:shadow-cyan-500/20 hover:-translate-y-2 transition-all duration-300 ease-in-out ${bgnote}`}
               >
                 <div className="p-6 pb-2">
                   <h2 className="font-bold text-4xl text-center text-amber-100 break-words line-clamp-2 leading-tight">
