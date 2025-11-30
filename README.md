@@ -1,6 +1,7 @@
 # Notes App
 
 A modern, responsive notes application built with React and Tailwind CSS.
+Deployed at https://dipanjan2907.github.io/Note_App/
 
 ## 🚀 Features
 
