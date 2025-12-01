@@ -1,13 +1,26 @@
-import React, { useState, useRef } from "react";
-
+import React, { useState, useEffect, useRef } from "react";
 const App = () => {
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
   const [task, setTask] = useState([]);
 
-  // 1. Create a ref to access the scrollable container DOM element
   const scrollContainerRef = useRef(null);
+  useEffect(() => {
+    try {
+      const savedNotes = localStorage.getItem("my-notes-app");
+      if (savedNotes) {
+        setTask(JSON.parse(savedNotes));
+      }
+    } catch (error) {
+      console.error("Failed to load notes:", error);
+    }
+  }, []);
 
+  useEffect(() => {
+    if (task.length > 0) {
+      localStorage.setItem("my-notes-app", JSON.stringify(task));
+    }
+  }, [task]);
   function createRipple(e) {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -30,10 +43,8 @@ const App = () => {
     setTask(copyTask);
   };
 
-  // 2. This function handles the translation of vertical scroll to horizontal
   const handleWheel = (e) => {
     if (scrollContainerRef.current) {
-      // elem.scrollLeft += e.deltaY adds the vertical scroll amount to the horizontal position
       scrollContainerRef.current.scrollLeft += e.deltaY;
     }
   };
