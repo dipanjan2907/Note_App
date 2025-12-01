@@ -4,6 +4,7 @@ const App = () => {
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
   const [task, setTask] = useState([]);
+  const [shouldScroll, setShouldScroll] = useState(false);
 
   const scrollContainerRef = useRef(null);
 
@@ -33,6 +34,18 @@ const App = () => {
     }
   }, [task]);
 
+  useEffect(() => {
+    if (shouldScroll && scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      if (window.innerWidth >= 768) {
+        container.scrollTo({ left: container.scrollWidth, behavior: "smooth" });
+      } else {
+        container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
+      }
+      setShouldScroll(false);
+    }
+  }, [task, shouldScroll]);
+
   function createRipple(e) {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -47,6 +60,7 @@ const App = () => {
     setTask([...task, { title, details }]);
     setDetails("");
     setTitle("");
+    setShouldScroll(true);
   };
 
   const deleteNote = (i) => {
@@ -76,27 +90,34 @@ const App = () => {
               -ms-overflow-style: none;
               scrollbar-width: none;
           }
+          
+
+          /* 1. Standard (Firefox) */
+          .custom-scrollbar {
+              scrollbar-width: auto; /* 'auto' shows a thicker bar than 'thin' */
+              scrollbar-color: #f59e0b #1f2937; /* Amber Thumb, Dark Grey Track */
+          }
+
+          /* 2. Webkit (Chrome, Edge, Safari) */
           .custom-scrollbar::-webkit-scrollbar {
-              height: 6px;
-              width: 6px; 
+              height: 14px; /* Made taller so it's very obvious */
+              width: 14px; 
           }
           .custom-scrollbar::-webkit-scrollbar-track {
-              background: transparent;
-          }
-          .custom-scrollbar::-webkit-scrollbar-thumb {
-              background-color: rgba(245, 158, 11, 0.3);
-              border-radius: 20px;
+              background: #1f2937; /* DARK GREY BACKGROUND - Makes the track visible */
+              border-radius: 8px;
+              margin: 0px 20px; /* Adds some spacing from the edges */
           }
           .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-              background-color: rgba(245, 158, 11, 0.6);
+              background-color: rgba(245, 158, 11, 1);
           }
           .custom-scrollbar {
               scrollbar-width: thin;
-              scrollbar-color: rgba(245, 158, 11, 0.3) transparent;
+              scrollbar-color: rgba(245, 158, 11, 0.3) rgba(255, 255, 255, 0.05);
           }
         `}
       </style>
-      <div className="body-bg min-h-screen bg-[#10141f] flex flex-col font-sans pb-10">
+      <div className="body-bg h-screen bg-[#10141f] flex flex-col font-sans">
         <div className="flex items-start justify-center pt-6 px-4">
           <form
             onSubmit={submitHandler}
@@ -142,7 +163,7 @@ const App = () => {
 
         <div className="flex items-center gap-4 px-6 sm:px-10 py-5">
           <div className="h-px bg-amber-700 grow"></div>
-          <h3 className="text-amber-500 text-lg sm:text-xl font-extrabold tracking-wide whitespace-nowrap">
+          <h3 className="text-amber-500 text-lg sm:text-xl font-bold tracking-wide whitespace-nowrap">
             {task.length === 0
               ? "No Notes"
               : task.length === 1
@@ -155,8 +176,8 @@ const App = () => {
         <div
           ref={scrollContainerRef}
           onWheel={handleWheel}
-          className="px-4 sm:px-10 py-4 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-10 w-full 
-             md:overflow-x-auto md:overflow-y-hidden custom-scrollbar min-h-[50vh]"
+          className="px-4 sm:px-10 py-4 pb-8 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-10 w-full 
+             overflow-x-auto overflow-y-auto md:overflow-y-hidden custom-scrollbar flex-1"
         >
           {task.map(function (elem, i) {
             let bgnote;
@@ -178,7 +199,7 @@ const App = () => {
               <div
                 key={i}
                 className={`flex flex-col shrink-0 rounded-3xl h-[20rem] w-full max-w-sm md:w-[22rem] md:h-[25rem] 
-                    backdrop-blur-md border border-white/10 shadow-xl 
+                    backdrop-blur-md border border-white/40 shadow-xl 
                     hover:shadow-purple-500/20 hover:-translate-y-2 transition-all duration-300 ease-in-out ${bgnote}`}
               >
                 <div className="p-6 pb-2">
