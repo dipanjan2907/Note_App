@@ -269,7 +269,7 @@ const App = () => {
 
         <div
           ref={scrollContainerRef}
-          className="flex-1 px-4 sm:px-10 py-4 pb-8 flex flex-wrap items-center md:items-start gap-6 md:gap-10 w-full overflow-y-auto custom-scrollbar"
+          className="flex-1 px-4 sm:px-10 py-4 pb-8 flex flex-wrap justify-center md:items-start gap-6 md:gap-10 w-full overflow-y-auto custom-scrollbar"
         >
           {task.map(function (elem, i) {
             let bgnote;
