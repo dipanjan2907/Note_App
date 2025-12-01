@@ -7,6 +7,15 @@ const App = () => {
 
   const scrollContainerRef = useRef(null);
 
+  let lastTap = 0;
+  function handleDoubleTap(callback) {
+    const now = Date.now();
+    if (now - lastTap < 300) {
+      callback();
+    }
+    lastTap = now;
+  }
+
   useEffect(() => {
     try {
       const savedNotes = localStorage.getItem("my-notes-app");
@@ -119,10 +128,12 @@ const App = () => {
 
         <div className="flex justify-end px-4 sm:px-0 sm:mr-10">
           <button
-            onDoubleClick={() => {
-              localStorage.removeItem("my-notes-app");
-              setTask([]);
-            }}
+            onClick={() =>
+              handleDoubleTap(() => {
+                localStorage.removeItem("my-notes-app");
+                setTask([]);
+              })
+            }
             className="mt-4 px-6 py-2 rounded-full border border-red-500/50 text-red-400 font-bold hover:bg-red-500 hover:text-white transition-all duration-300 active:scale-90 text-sm sm:text-base"
           >
             Delete All (Double Click)

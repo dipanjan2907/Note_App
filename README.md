@@ -5,17 +5,20 @@ Deployed at https://dipanjan2907.github.io/Note_App/
 
 ## 🚀 Features
 
--   **Create Notes**: Easily add new notes with a title and detailed description.
--   **Delete Notes**: Remove notes you no longer need.
--   **Responsive Design**: A grid layout that adapts to different screen sizes.
--   **Modern UI**: Features a dark theme with glassmorphism effects, gradients, and smooth transitions.
--   **Local State**: Notes are managed in the local component state (currently non-persistent).
+- **Create Notes**: Easily add new notes with a title and detailed description.
+- **Persistent Storage**: Notes are automatically saved to your browser's local storage, so you never lose your data.
+- **Delete Notes**: Remove individual notes you no longer need.
+- **Delete All**: Quickly clear all notes with a double-click action.
+- **Responsive Design**: A grid layout that adapts to different screen sizes.
+- **Horizontal Scrolling**: Smooth horizontal scrolling for note navigation on desktop devices.
+- **Modern UI**: Features a dark theme with glassmorphism effects, dynamic gradient backgrounds, and smooth transitions.
+- **Note Count**: Real-time display of the total number of notes.
 
 ## 🛠️ Tech Stack
 
--   **[React](https://react.dev/)**: JavaScript library for building user interfaces.
--   **[Vite](https://vitejs.dev/)**: Next Generation Frontend Tooling.
--   **[Tailwind CSS](https://tailwindcss.com/)**: A utility-first CSS framework for rapid UI development.
+- **[React](https://react.dev/)**: JavaScript library for building user interfaces.
+- **[Vite](https://vitejs.dev/)**: Next Generation Frontend Tooling.
+- **[Tailwind CSS](https://tailwindcss.com/)**: A utility-first CSS framework for rapid UI development.
 
 ## 📦 Installation & Getting Started
 
