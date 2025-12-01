@@ -214,7 +214,7 @@ const App = () => {
           </button>
         </div>
 
-        <div className="flex h-[35vh] w-[200vh] self-center items-start justify-center pt-6 px-4">
+        <div className="flex h-[22rem] w-[200vh] self-center items-start justify-center pt-6 px-4">
           <form
             onSubmit={submitHandler}
             className="flex flex-col gap-4 sm:gap-6 p-4 sm:p-6 rounded-2xl w-full max-w-xl shadow-2xl bg-[#10141f] border border-b-indigo-500 active:border-fuchsia-900"
@@ -257,7 +257,7 @@ const App = () => {
           </button>
         </div>
 
-        <div className="flex items-center gap-4 px-6 sm:px-10 py-1">
+        <div className="flex gap-4 px-6 sm:px-10 py-1">
           <div className="h-px bg-amber-700 grow"></div>
           <h3 className="text-amber-500 text-lg sm:text-xl font-bold tracking-wide whitespace-nowrap">
             {task.length === 0
