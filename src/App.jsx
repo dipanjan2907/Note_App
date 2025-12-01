@@ -293,7 +293,7 @@ const App = () => {
               <div
                 key={i}
                 className={`flex flex-col shrink-0 rounded-3xl h-[20rem] w-full md:w-[20rem] md:h-[25rem] 
-                    backdrop-blur-md border border-white/40 shadow-xl 
+                    backdrop-blur-md border border-white md:border-white/70 shadow-xl 
                     hover:shadow-purple-500/20 hover:-translate-y-2 transition-all duration-300 ease-in-out ${bgnote}`}
               >
                 <div className="p-6 pb-2">
