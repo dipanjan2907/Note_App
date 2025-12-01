@@ -114,14 +114,20 @@ const App = () => {
           className="p-10 flex flex-wrap justify-center md:flex-nowrap md:items-center gap-7 md:gap-10 flex-1 w-full overflow-y-auto overflow-x-hidden md:overflow-x-auto md:overflow-y-hidden custom-scrollbar"
         >
           {task.map(function (elem, i) {
-            const gradients = [
-              "bg-gradient-to-br from-[#230c0c] via-[#3b1512] to-[#120606]",
-              "bg-gradient-to-br from-[#031d1e] via-[#06353a] to-[#010e11]",
-              "bg-gradient-to-br from-[#1e0c23] via-[#35123b] to-[#100612]",
-              "bg-gradient-to-br from-[#0c2314] via-[#123b20] to-[#061208]",
-            ];
+            let bgnote;
 
-            const bgnote = gradients[i % gradients.length];
+            if (i % 4 === 0)
+              bgnote =
+                "bg-gradient-to-br from-[#0c2314] via-[#123b20] to-[#061208]";
+            else if (i % 3 === 0)
+              bgnote =
+                "bg-gradient-to-br from-[#1e0c23] via-[#35123b] to-[#100612]";
+            else if (i % 2 === 0)
+              bgnote =
+                "bg-gradient-to-br from-[#031d1e] via-[#06353a] to-[#010e11]";
+            else
+              bgnote =
+                "bg-gradient-to-br from-[#230c0c] via-[#3b1512] to-[#120606]";
 
             return (
               <div
