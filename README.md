@@ -44,6 +44,7 @@ Deployed at https://dipanjan2907.github.io/Note_App/
     ```
 
     Open your browser and navigate to the local URL provided (usually `http://localhost:5173`).
+    Ctrl+- or Ctrl++ the browser according to your needs. (80% recommended for laptops)
 
 ## 🚀 Deployment
 
