@@ -5,7 +5,6 @@ const App = () => {
   const [details, setDetails] = useState("");
   const [task, setTask] = useState([]);
 
-  // 1. Create a ref to access the scrollable container DOM element
   const scrollContainerRef = useRef(null);
 
   function createRipple(e) {
@@ -30,10 +29,8 @@ const App = () => {
     setTask(copyTask);
   };
 
-  // 2. This function handles the translation of vertical scroll to horizontal
   const handleWheel = (e) => {
-    if (scrollContainerRef.current) {
-      // elem.scrollLeft += e.deltaY adds the vertical scroll amount to the horizontal position
+    if (scrollContainerRef.current && window.innerWidth >= 768) {
       scrollContainerRef.current.scrollLeft += e.deltaY;
     }
   };
@@ -51,7 +48,7 @@ const App = () => {
           }
           .custom-scrollbar::-webkit-scrollbar {
               height: 6px;
-              width: 0px; 
+              width: 6px; 
           }
           .custom-scrollbar::-webkit-scrollbar-track {
               background: transparent;
@@ -69,11 +66,11 @@ const App = () => {
           }
         `}
       </style>
-      <div className="h-screen overflow-hidden flex flex-col font-sans">
-        <div className="flex items-start justify-center pt-3 pb-1 ">
+      <div className="h-screen overflow-hidden flex flex-col font-sans bg-zinc-950">
+        <div className="flex items-start justify-center pt-3 pb-1 shrink-0">
           <form
             onSubmit={submitHandler}
-            className="flex flex-col gap-6 p-6 rounded-2xl w-full max-w-xl shadow-2xl bg-[#10141f] border border-b-indigo-500 active:border-fuchsia-900"
+            className="flex flex-col gap-6 p-6 rounded-2xl w-full max-w-xl shadow-2xl bg-[#10141f] border border-b-indigo-500 active:border-fuchsia-900 mx-4"
           >
             <input
               type="text"
@@ -99,7 +96,7 @@ const App = () => {
           </form>
         </div>
 
-        <div className="flex items-center gap-4 px-10 py-5">
+        <div className="flex items-center gap-4 px-10 py-5 shrink-0">
           <div className="h-px bg-amber-700 grow"></div>
           <h3 className="text-amber-500 text-xl font-extrabold tracking-wide">
             {task.length === 0
@@ -110,26 +107,21 @@ const App = () => {
           </h3>
           <div className="h-px bg-amber-700 grow"></div>
         </div>
+
         <div
           ref={scrollContainerRef}
           onWheel={handleWheel}
-          className="p-10 flex items-center gap-7 md:gap-10 flex-1 w-full overflow-x-auto overflow-y-hidden custom-scrollbar"
+          className="p-10 flex flex-wrap justify-center md:flex-nowrap md:items-center gap-7 md:gap-10 flex-1 w-full overflow-y-auto overflow-x-hidden md:overflow-x-auto md:overflow-y-hidden custom-scrollbar"
         >
           {task.map(function (elem, i) {
-            let bgnote;
+            const gradients = [
+              "bg-gradient-to-br from-[#230c0c] via-[#3b1512] to-[#120606]",
+              "bg-gradient-to-br from-[#031d1e] via-[#06353a] to-[#010e11]",
+              "bg-gradient-to-br from-[#1e0c23] via-[#35123b] to-[#100612]",
+              "bg-gradient-to-br from-[#0c2314] via-[#123b20] to-[#061208]",
+            ];
 
-            if (i % 4 === 0)
-              bgnote =
-                "bg-gradient-to-br from-[#0c2314] via-[#123b20] to-[#061208]";
-            else if (i % 3 === 0)
-              bgnote =
-                "bg-gradient-to-br from-[#1e0c23] via-[#35123b] to-[#100612]";
-            else if (i % 2 === 0)
-              bgnote =
-                "bg-gradient-to-br from-[#031d1e] via-[#06353a] to-[#010e11]";
-            else
-              bgnote =
-                "bg-gradient-to-br from-[#230c0c] via-[#3b1512] to-[#120606]";
+            const bgnote = gradients[i % gradients.length];
 
             return (
               <div
