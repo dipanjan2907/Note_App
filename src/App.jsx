@@ -185,11 +185,7 @@ const App = () => {
           <div className="h-px bg-amber-700 grow"></div>
         </div>
 
-        <NoteList
-          task={task}
-          deleteNote={deleteNote}
-          scrollContainerRef={scrollContainerRef}
-        />
+        <NoteList task={task} deleteNote={deleteNote} />
       </div>
     </>
   );
