@@ -5,7 +5,7 @@ const NoteList = ({ task, deleteNote, scrollContainerRef }) => {
   return (
     <div
       ref={scrollContainerRef}
-      className="px-4 sm:px-10 py-4 pb-8 flex flex-wrap justify-center items-center md:items-start gap-6 md:gap-10 w-full overflow-y-auto custom-scrollbar"
+      className="px-4 sm:px-10 py-4 pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full max-w-7xl mx-auto overflow-y-auto custom-scrollbar"
     >
       {task.map(function (elem, i) {
         let bgnote;
