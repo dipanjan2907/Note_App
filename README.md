@@ -13,6 +13,8 @@ Deployed at https://dipanjan2907.github.io/Note_App/
 - **Horizontal Scrolling**: Smooth horizontal scrolling for note navigation on desktop devices.
 - **Modern UI**: Features a dark theme with glassmorphism effects, dynamic gradient backgrounds, and smooth transitions.
 - **Note Count**: Real-time display of the total number of notes.
+- **Background Music**: Integrated music player with play/pause functionality for a relaxing note-taking experience.
+- **Volume Control**: Adjustable volume slider to customize the background music level.
 
 ## 🛠️ Tech Stack
 
