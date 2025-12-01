@@ -3,7 +3,7 @@ import React from "react";
 const NoteCard = ({ note, index, deleteNote, bgnote }) => {
   return (
     <div
-      className={`flex flex-col shrink-0 rounded-3xl h-[20rem] w-full md:h-[25rem] lg:h-[27rem]
+      className={`flex flex-col shrink-0 rounded-3xl h-[20rem] w-full md:w-[20rem] md:h-[25rem] 
           backdrop-blur-md border border-white md:border-white/70 shadow-xl 
           hover:shadow-purple-500/20 hover:-translate-y-2 transition-all duration-300 ease-in-out ${bgnote}`}
     >
