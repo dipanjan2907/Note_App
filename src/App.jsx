@@ -37,11 +37,7 @@ const App = () => {
   useEffect(() => {
     if (shouldScroll && scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      if (window.innerWidth >= 768) {
-        container.scrollTo({ left: container.scrollWidth, behavior: "smooth" });
-      } else {
-        container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
-      }
+      container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
       setShouldScroll(false);
     }
   }, [task, shouldScroll]);
@@ -70,12 +66,6 @@ const App = () => {
 
     if (copyTask.length === 0) {
       localStorage.removeItem("my-notes-app");
-    }
-  };
-
-  const handleWheel = (e) => {
-    if (window.innerWidth >= 768 && scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft += e.deltaY;
     }
   };
 
@@ -161,7 +151,7 @@ const App = () => {
           </button>
         </div>
 
-        <div className="flex items-center gap-4 px-6 sm:px-10 py-5">
+        <div className="flex items-center gap-4 px-6 sm:px-10 py-1">
           <div className="h-px bg-amber-700 grow"></div>
           <h3 className="text-amber-500 text-lg sm:text-xl font-bold tracking-wide whitespace-nowrap">
             {task.length === 0
@@ -175,9 +165,7 @@ const App = () => {
 
         <div
           ref={scrollContainerRef}
-          onWheel={handleWheel}
-          className="px-4 sm:px-10 py-4 pb-8 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-10 w-full 
-             overflow-x-auto overflow-y-auto md:overflow-y-hidden custom-scrollbar flex-1"
+          className="px-4 sm:px-10 py-4 pb-8 flex flex-wrap items-center md:items-start gap-6 md:gap-10 w-full overflow-y-auto custom-scrollbar flex-1"
         >
           {task.map(function (elem, i) {
             let bgnote;
@@ -198,7 +186,7 @@ const App = () => {
             return (
               <div
                 key={i}
-                className={`flex flex-col shrink-0 rounded-3xl h-[20rem] w-full max-w-sm md:w-[22rem] md:h-[25rem] 
+                className={`flex flex-col shrink-0 rounded-3xl h-[20rem] w-full md:w-[20rem] md:h-[25rem] 
                     backdrop-blur-md border border-white/40 shadow-xl 
                     hover:shadow-purple-500/20 hover:-translate-y-2 transition-all duration-300 ease-in-out ${bgnote}`}
               >
